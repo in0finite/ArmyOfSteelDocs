@@ -1,0 +1,56 @@
+
+[02.03.2017]
+- improved gathering of DGR
+- gathering is continued when resource disappears
+- cost for placing buildings is now applied
+
+[03.03.2017]
+- fixed sorting of resources by distance from settler when finding next resource to gather
+- changed the way the country UI text is updated
+
+[04.03.2017]
+- added country stats - updated UI to display them
+- gui layout is not used if object is not selected
+
+[05.03.2017]
+- countries are now kept in a list for faster access
+- settler's gathering resource is now a syncvar
+- color based on country is set on town center, oil factory, farm
+- tank no longer casts shadows, truck no longer casts and receives shadows
+- changed terrain cloning
+
+[06.03.2017]
+- fixed tree instances sync
+
+[07.03.2017]
+- settler stops now when in gather range of gatherable
+
+[12.03.2017]
+- startup countries, buildings, units are spawned
+- new maps can be easily added now
+- menu is fixed and improved
+
+[13.03.2017]
+- menu improved
+- rotation is done around the camera itself
+
+[14.03.2017]
+- startup spawner now waits for tree resource creator to finish ; tree resource creator script is attached to game manager
+
+[17.03.2017]
+- most of AI work (gathering, resource spending, creating key point) is put in a coroutines
+
+[18.03.2017]
+- resource availability factor is obtained right after the appropriate resource is found, not after
+iterating through all resources
+- resource gatherer optimized - searching for resource is done in a coroutine
+
+[21.03.2017]
+- fixed: settlers not constructing buildings upon their placement
+- tree instances are synced using only positions
+- AI will construct walls now
+
+[24.03.2017]
+- AI - checks military strength in area around attack target
+- AI - attack group position is in the middle of all units - this allows them to quickly continue attack campaign
+
