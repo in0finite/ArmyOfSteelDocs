@@ -50,3 +50,7 @@ iterating through all resources
 - tree instances are synced using only positions
 - AI will construct walls now
 
+[24.03.2017]
+- AI - checks military strength in area around attack target
+- AI - attack group position is in the middle of all units - this allows them to quickly continue attack campaign
+
