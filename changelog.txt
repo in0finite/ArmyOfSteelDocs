@@ -54,3 +54,11 @@ iterating through all resources
 - AI - checks military strength in area around attack target
 - AI - attack group position is in the middle of all units - this allows them to quickly continue attack campaign
 
+[27.03.2017]
+- removed turret from tank, door meshes from fort
+
+[28.03.2017]
+- game over menu
+- game over condition
+- improved HUD: number of selected objects is displayed ; when button with object name is clicked, only objects with that name are selected
+
