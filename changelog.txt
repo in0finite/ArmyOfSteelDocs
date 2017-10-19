@@ -62,3 +62,299 @@ iterating through all resources
 - game over condition
 - improved HUD: number of selected objects is displayed ; when button with object name is clicked, only objects with that name are selected
 
+// skipped a lot of time
+
+[23.05.2017]
+- fixed AI disable/enable button
+- added smooth zoom
+- 3d audio for projectile
+
+[24.05.2017]
+- map image is displayed in menu
+- buildings now throw pieces when damaged
+- added explosion sound
+
+[31.05]
+- HUD is completely ported to new UI
+- AI is disabled when player connects
+- unit destination position is synced
+- unit destination position is displayed only for controlling player, and only if unit is selected
+
+[02.06]
+- building pieces are falling off when building is destroyed
+
+[03.06]
+- attack is now a script - objects can have multiple attacks attached and they can fire from each one of them
+- projectile system
+- projectile shooting direction is randomized so it doesn't only target edge points
+
+[08 jun 2017]
+- added new unit: rocket launcher
+- changed LOS of fort and tower to 40
+- added projectile path curve
+- UI selection is removed when menu is switched
+
+[09 jun 2017]
+- minimap click fixed
+- AI attack priority changed : buildings -> units - the closest one
+- attack range ring is drawn
+
+[19 jun 2017]
+- camera focus mode introduced
+- AI can train rocket launcher
+- removed OnGUI() from ObjectOnMap class - now, function for gui drawing is called from game manager - performance has greatly improved (or not)
+
+[01 aug 2017]
+- imported uGameCore
+- removed unused assets
+- organized project folders
+
+[02 aug 2017]
+- finished integrating uGameCore
+
+[03 aug 2017]
+- introduced AI log level
+- every object gets ongui call from game manager
+- useGUILayout is set to false for all objects
+- added console commands: nations, getunits
+
+[04 aug 2017]
+- added console commands: killnation, getres
+- game over - now it can detect game over for each nation separately
+- AI - idle units are moved on time interval ; units can join attack ; units are not ordered to move to attack group position if they are already there ; attack priority changed : military buildings -> units -> other buildings - closest first
+
+[05 aug 2017]
+- introduced world partitioning - scanning for enemy objects is adapted => much better performance
+
+[06 aug 2017]
+- GetFriendlyVsEnemyMilitaryStrengthInArea() uses world partitioning => much better performance
+- fixed timing for joining units to attack
+- added 'AIdebug' console command
+- changed condition for joining to attack
+- changed hitpoints of tank and attack of rocket launcher
+- colored : AI logs, 'nations' command output, AI's attack target in OnGUI() stats
+- buildings can not be repaired if under attack ; building repair rate is decreased
+- introduced experience
+- each nation has experience, total damage inflicted, num kills, score
+- 'nations' command response added experience and score
+
+[07 aug 2017]
+- experience text mesh is created when object is created/destroyed
+
+[10 aug 2017]
+- upon game over, chat message is sent, and game over menu is opened if it is complete game over, or if
+it is game over for local player ; some stats are displayed in game over menu
+
+[14 aug 2017]
+- scoreboard customized
+
+[16 aug 2017]
+- in-game menu : changed canvas scaler's reference resolution to 1280x720 and match to 0.5 ; added Image component to nesting game objects - fixed bug with frozen UI elements ; adapted positions and anchors of all UI elements
+- HUD : changed way of instantiating UI elements - now using extension method - fixed bug when buttons become too large
+- added go to home button
+
+[17 aug 2017]
+- AI stats are displayed in window
+- started converting Resource to separate class ; started creating Selectable script
+
+[18 aug 2017]
+- finished Selectable script - now all objects have it
+- finished converting Resource - it no longer inherits ObjectOnMap
+- AI stats string is synced - it can be seen on clients now
+- added button for opening/closing AI stats window
+
+[19 aug 2017]
+- optimized function for finding DGR - AIGatherAction and ResourceGatherer are now faster and use less memory
+- created CoroutinePauser - ResourceGatherer and AIGatherAction use it
+- optimized AIGatherAction : it no longer constructs list of all objects, but instead uses ObjectOnMap.GetFriendlyVsEnemyMilitaryStrengthInArea(), which both reduces memory and increases performance
+- AI attack : when joining units, they are added to list of units ; attack is aborted if strength of units is lower than strength around target ; attack is started if strength of grouped units is 20% higher than strength around target ; attack is started if all non-ignored units are grouped, and if their strength is higher than strength around target ;
+
+[20 aug 2017]
+- AI : when aborting attack, units that don't have target in attack range are stopped ; fixed condition for joining to attack (now checking negative strength around target) ; when starting new attack, units that are in attack or combat state are skipped, except those for which the newly found attack target is in range, or if it is actually their current target ; fixed Aggregate() bug in FindAttackTarget() ; grouping position height is adjusted ; grouping is skipped if strength of units which have range on target object is higher than strength of enemy objects around target ;
+
+[21 aug 2017]
+- AI : unit is not joined to attack if it is already part of it ;
+- improved minimap code
+- nation is notified (with a message) when her object is attacked
+- minimap : added circles
+- when owning object is attacked, alert is shown on minimap
+
+[22 aug 2017]
+- optimized minimap code - moved some code to texture extension methods ; clearing texture uses GetPixels32() / SetPixels32(), which is fastest method (is it ?) ;
+- minimap : changed texture wrap mode to clamp - circles are drawn properly ; frustrum is drawn with 4 lines which connect world positions which are hit by rays casted from screen corners onto plane parallel with ground ;
+- started fog of war
+
+[23 aug 2017]
+- minimap : raycasts for camera frustrum are casted against plane with normal (0,1,0) and y position 0 ; all drawing is done on GPU ( using camera on post render event ) using GL, and everything is rendered to texture ; minimap objects are drawn as quads, camera frustrum as lines ; FoW texture is drawn on top, after objects are drawn ;
+
+[31 aug 2017]
+- finished fog of war : terrain shader finished - it samples FoW texture using tex2Dbias to blur the edges ; renderers on non-visible objects are disabled ;
+- minimap : doesn't draw non-visible objects ; camera frustrum color is applied properly ;
+
+[01 sep 2017]
+- optimized minimap - it should be a bit faster
+- started integrating multithreading into FoW
+
+[02 sep 2017]
+- FoW now uses multithreading to generate visibility maps and texture
+
+[03 sep 2017]
+- fixed multithreaded sync performance bug in FoW job queue - it no longer takes ~10 ms to add jobs to queue
+- fixed visibility maps - added third buffer ; value in a visibility map represents update count ; no need to reset visible points, but still, the whole buffer has to be copied into third buffer
+- fixed minimap's and FoW object's visibility checking - they use the spectating country
+
+[04 sep 2017]
+- fixed FoW job time measuring
+- improved ObjectOnMap.Update() ; removed status string updating
+- started separating attacking stuff from ObjectOnMap to Attacker
+
+[05 sep 2017]
+- finished separating Attacker ; optimized update functions in ObjectOnMap, MilitaryUnit
+- OrderToAttack() assigns time when updated movement - double move orders don't occur
+
+[06 sep 2017]
+- separated training to Trainer class
+- moved all movement functions from ObjectOnMap to MilitaryUnit
+- fixed bug when building was constructed even while receiving damage
+- construction is only updated in Settler, not in MilitaryUnit
+- adapted FoW to multiplayer and spectating country
+
+[07 sep 2017]
+- FogOfWarObject - registration to FoW system is optional ; it also hides particle systems
+- adapted to FoW : experience text mesh, gold, projectiles, selection/health bar, scanning for enemy objects, attacking, building crash pieces, selecting objects ( now uses raycast all, returns first visible object ; non-visible objects are removed from selection ), 
+- added console command: getunitsall
+- moved some selection oriented methods from RTSGameManager to SelectionManager
+
+[08 sep 2017]
+- removed some shader features (specular highlights, reflections, GI) on: tank, fort, tower
+- settler can not build walls and gates ; AI can not build walls
+- changed way the nav mesh agent is stopped/resumed - no performance improvement
+
+[10 sep 2017]
+- added option to turn FoW on/off - modified: lookup function, shader, setting global shader variable
+- added console command: fow
+- added limit on FoW update rate
+- selection changed event is fired when selection really changes, not almost every frame
+- improved HUD.UpdateInfoArea() - new text is assigned only if it is changed
+- HUD reconstruction now uses object pooling - there is no lag when selecting objects
+- changed water reflect and refract layers to ground only
+
+[11 sep 2017]
+- GetEdgePoints renamed to GetCorners ; GetCorners fills buffer (List<T>), instead of returning allocated array - should greatly reduce GC usage ;
+- Resource and Building now cache box colliders
+- removed garrison stuff from ObjectOnMap
+- removed ObjectOnMap.Update() function - standing is updated in Attacker, cells in MilitaryUnit
+- CreateExplosionOnDestroy now creates explosion in next frame
+
+[12 sep 2017]
+- gizmos for ObjectOnMap - now draws bounds of nearby objects
+- fixed bug : buildings not registering into cell manager
+- created some cell related functions inside ObjectOnMap - to prevent objects to stay in old cells
+
+[13 sep 2017]
+- created ObjectContainer class ; all selectables are kept in a container ; SelectionManager does not use FindObjectsOfType(), but iterates through container - reduced GC usage and improved speed ; improved speed of selecting with a dragging box ;
+- tooltips for train buttons started
+- scoreboard transparency
+
+[15 sep 2017]
+- tooltips finished
+- added description for each object
+- training buttons have tooltips which display object description
+- created ObjectIdTooltip script - updates tooltip based on given object id - TrainButton and SelectedObjectsButton use it
+
+[16 sep 2017]
+- selected object name button has a tooltip and changes text color based on owning country
+- added right click action for HUDEventsHandler
+- right click on selected object button deselects objects with corresponding name
+- added function SelectionManager.RemoveObjectsFromSelection( Predicate ) - HUD uses it when selecting/deselecting objects
+
+[17 sep 2017]
+- added new variables in ObjectOnMap - population slots, count limit ; added new variables in Country - current population, max population
+
+[18 sep 2017]
+- added function Country.CanProduceObject()
+- produce button tooltip - insufficient resources are colored red ; if object can not be produced, text is displayed to show why ; button is interactable only if object can be produced
+- country name is assigned ; country name is displayed in color, on many places ;
+- country id is now an internal variable - was network id
+- selectable configuration can be disabled in ObjectOnMap ; added selectable configuration to Resource ; resources now have ObjectOnMap script attached ;
+- started new id system
+
+[19 sep 2017]
+- new id system finished : object id definitions ScriptableObject - contains all object ids ; property drawer for object id ; ObjectId contains string which is a unique name ; RTSGameManager preloads all objects into a list, and uses it to retreive object prefab ; Trainer's list of trainable objects is now serializable ; assigned object id for all objects ; assigned trainable objects for all Trainers ;
+
+[20 sep 2017]
+- started reorganization of classes : created handler interfaces ; created 2 default handler scripts - CompleteUnitHandler and CompleteBuildingHandler - implemented all methods for ObjectOnMap ;
+
+[21 sep 2017]
+- class reorganization : implemented all methods for Controllable ; implemented Building methods in CompleteBuildingHandler ; all 'final' scripts (e.g Tank, Fort, Tower) now inherit MonoBehaviour ; MilitaryUnit no longer inherits ObjectOnMap ; Building no longer inherits ObjectOnMap ;
+
+[22 sep 2017]
+- created Controllable script
+- modifications throughout entire project
+- created DefaultObjectOnMapHandler, and ObjectOnMapHandlerForResource which inherits it
+- handlers can automatically setup themselfs with context menu option
+
+[23 sep 2017]
+- assigned properties for all objects (in inspector)
+- started removing status variable from ObjectOnMap - adapted Attacker ; started adapting MilitaryUnit ;
+
+[26 sep 2017]
+- removed IsIdle() function from MilitaryUnit ;
+- Country.Update() doesn't clear dictionaries with unit and building infos, but only resets infos - should reduce GC usage ;
+- finished removing status variable from ObjectOnMap ;
+- started separating Settler from MilitaryUnit ; implemented CompleteWorkerHandler ; Settler script separated from MilitaryUnit ;
+- finished class reorganization
+- created CompleteGatheringBuildingHandler script ;
+
+[27 sep 2017]
+- renamed : Settler -> Worker ; MilitaryUnit -> Unit ; MilitaryUnitType -> UnitId ; BuildingTypeId -> BuildingId ; Country.NamedResource -> NamedResource ;
+- replaced : settler -> worker ; Settler -> Worker ;
+
+[28 sep 2017]
+- game over is synced
+- adjusted UI elements - commands area, produce area, selected objects area
+- range ring object is pooled
+
+[29 sep 2017]
+- fixed range ring object pooling
+
+[30 sep 2017]
+- removed rocket sound
+- audio source is disabled if under FoW
+- particle system is no longer visible if under FoW
+- projectiles no longer visible if under FoW
+- reduced sound of projectile when far away from listener
+
+[01 oct 2017]
+- minimap does not draw FoW texture if FoW is turned off
+- crash pieces are not spawned when testing for building placement
+- tooltip for produce button now shows error in red color
+- Trainer.AddObjectToTrainingQueue() first checks if country can produce object ; Trainer.UpdateTraining() checks population limit and per object limit before creating object ; RTSPlayer.CmdBuild() checks if building can be produced ;
+
+[02 oct 2017]
+- when country adds new objects, inside Country.OnNewObjectCreated(), it also updates population and objects info - now population limit and per object limit should work correctly
+- CountryUI - now uses string builder ; displays population ;
+
+[03 oct 2017]
+- adjusted descriptions and display names for some objects
+
+[04 oct 2017]
+- selected object button has default color
+- when looking for object under mouse, raycast hits are sorted by distance
+- added event in StartupCreator to notify when creating is finished ; RTSPlayer - added support to assign country when StartupCreator finishes ; player is spawned when scene changes ; scenes can now be changed ;
+
+[11 oct 2017]
+- mouse cursor is changed based on selected objects and object under mouse
+- added mouse cursor for : attack, construct, set rally position
+
+[12 oct 2017]
+- WorldPartitioner.GetCellByPosition() now checks if cells are initialized => prevents null reference exception
+- ReportMouseEvents now remembers if mouse pointer is over it
+- SelectionManager.GetSelectableObjectUnderMouse() and MouseCursor.UpdateCursor() check if mouse is over in-game panel
+- MouseCursor : added hotspot for each texture
+- FoW : filling is done into 2 buffers at the same time, so there is no need to copy the buffer at the end - should improve performance, especially for huge maps
+- adjusted cursor texture hotspots
+
+[13 oct 2017]
+- removed movement cursor texture
+
