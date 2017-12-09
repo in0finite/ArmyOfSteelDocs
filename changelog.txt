@@ -358,3 +358,62 @@ it is game over for local player ; some stats are displayed in game over menu
 [13 oct 2017]
 - removed movement cursor texture
 
+[23 nov 2017]
+- fixed population displaying
+- removed fow logging
+- attacks are not duplicated when displaying attack info
+- MoveCameraToObject() increased distance from object
+- now using separate button for object commands
+- fixed assigning attack cursor
+
+[24 nov 2017]
+- disabled UI navigation
+- removed uGameCore's team settings
+- country's experience, total damage inflicted, num kills are synced over net
+- again fixed assigning attack cursor
+- fixed functions in RTSGameManager for checking if objects/countries are friendly/enemies - added checks for null - now objects which don't have country will not be considered neither friend nor enemy to objects which have it
+
+[25 nov 2017]
+- when country is assigned to Controllable, it broadcasts message about it
+- fixed FoW on clients - FoW object registers itself when country is assigned, not in Start() function
+- made FoW registration more error-proof
+- fixed: CountrySync not syncing local player country
+- Attacker now inherits NetworkBehaviour - his state is synced - this could lower performance, since number of NetworkBehaviours is increased
+
+[28 nov 2017]
+- fixed: client unable to train units => caused by parameter of Command function being a class (ObjectId), so UNET wasn't able to send it over network
+
+[30 nov 2017]
+- removed 'controllingCountry' variable from RTSGameManager ; changed a lot of stuff in RTSPlayer - mostly about how country is assigned
+
+[01 dec 2017]
+- Training inherits NetworkBehaviour ; ObjectTraining is struct ; list of trainings is synced using SyncList
+- country is assigned to player when he logs in, not in RTSPlayer.Start() function
+- added 'experience text mesh' and projectile to list of spawnable prefabs in NetworkManager
+- created separate script for moving camera to owned object when country is assigned - it is no longer done in RTSPlayer script
+- CountrySync detects when AI state is changed, and enables/disables CountryAI script accordingly
+- CountryAI - draws AI stats on clients also
+- CountrySync - sends data from ALL countries to player that it is attached to - this way all countries will be synced, no matter if they have controlling player or not
+- 'experience text mesh' is not created by clients, only by server
+
+[02 dec 2017]
+- removed demo scene from map cycle and build settings - it was changing the playing object
+- 'experience text mesh' is destroyed only on server
+- fixed: 'experience text mesh' not having the correct color and experience amount on clients - for some reason, syncvars are not synced when object is created, so syncvars are now hooked to detect when they are changed, and update text mesh
+- player's country on clients is also set inside RTSPlayer.OnStartClient() - now country will be assigned also when client connects, not only when it is changed
+
+[03 dec 2017]
+- created AttributesModifier class
+- fixed tree instances sync bug
+
+[05 dec 2017]
+- Attacker stops unit movement while in combat
+
+[08 dec 2017]
+- fixed AIResourceSpendingAction throwing exceptions because of Aggregate() and First()
+- tooltips are finally fixed - did not work for different canvas scale values
+
+
+
+
+
