@@ -413,6 +413,29 @@ it is game over for local player ; some stats are displayed in game over menu
 - fixed AIResourceSpendingAction throwing exceptions because of Aggregate() and First()
 - tooltips are finally fixed - did not work for different canvas scale values
 
+[09 dec 2017]
+- adapted AttributesModifier for networking - it syncs modifiers using a synclist ; differently retreives data depending whether it is running on server or not
+
+[10 dec 2017]
+- moved all AI scripts to separate folder ; created RTS.AI namespace
+- resource spending action : generalized ; added support for extensions - scripts can compete for resource spending - added 2 scripts for spending resources on construction and training ; multiple cycles can be done at once - allows to, e.g., train multiple units at once ;
+- AI trains multiple units at a time - resource spending modules are notified when action is started and finished ; AITrainingResourceSpending requests additional cycles
+
+[11 dec 2017]
+- rocket launcher id is now recognized - the reason why it wasn't recognized is because Resources.FindObjectsOfTypeAll() returns only loaded objects, and rocket launcher somehow was not loaded into memory - solved by using Resources.LoadAll(), which actually loads assets into memory
+
+[12 dec 2017]
+- AI stats for resource spending are shown - AI actions can add their own text to stats - CountryAI is no longer aware of construction, training and resource coeficients
+- renamed Worker.buildingBeingConstructed to Worker.m_buildingBeingConstructed ; replaced all usages of m_buildingBeingConstructed (field) inside Worker with BuildingBeingConstructed (property) ; Worker's constructed building is now synced ;
+
+[13 dec 2017]
+- started integration of Astar Pathfinding Project : added AIPath script to all units ; added preprocessor define in project settings ; created prefab for graph ; created graph for terrain3 scene ; created Navigation script ;
+
+[14 dec 2017]
+- integration of Astar Pathfinding Project : adapted Unit
+
+
+
 
 
 
