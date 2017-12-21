@@ -3,7 +3,7 @@
 
 - worker can not get close enough to tree to gather from it (in most cases)
 
-- navigation : astar asset is useless without local avoidance - maybe find some script on net which can do it ? ; **navmesh doesn't lag without trees (maybe a little bit)** ;
+- navigation : astar asset is useless without local avoidance - maybe find some script on net which can do it ? ; or **optimize all navmeshes** (remove most of the trees, flatten terrain, increase voxel size) ;
 
 - navigate through AI stats of different AIs
 
