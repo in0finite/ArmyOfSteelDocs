@@ -1,4 +1,6 @@
-# rts_game
+# Overview
+
+RTS (real time strategy) game similar to StarCraft, built on top of [uGameCore](https://github.com/in0finite/uGameCore).
 
 # Download
 
