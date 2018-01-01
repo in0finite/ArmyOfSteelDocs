@@ -1,4 +1,6 @@
 
+- astar asset is useless without local avoidance - maybe find some script on net which can do it ?
+
 how to solve problem with blocking agents ?
 
 - make trees static parts of navigation : they will never be destroyed => will have infinite amount of resource - can be easily done => they can be baked together with terrain
@@ -7,7 +9,7 @@ how to solve problem with blocking agents ?
 
 - or just use small number of trees, hills, etc... anything that complicates navmesh ; increase voxel size (drastically reduces num triangles in a navmesh) ; each map can have around 20 trees (they will have large amount of wood, or perhaps infinite amount)
 
-why forest, when we can just use trees ? - no single reason
+why forest (group of trees), when we can just use trees ? - no single reason
 
 perhaps a water is causing performance drop ? it's large, and it's part of navmesh, even through it's not walkable
 
