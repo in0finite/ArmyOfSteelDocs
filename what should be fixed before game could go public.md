@@ -1,11 +1,11 @@
 
-- multiplayer : **test** ; better transform updating (use photon networking ? use lerping with Transform syncing ?) ; we need a server - or use matchmaking ;
+- multiplayer : **test** ; better transform updating (use photon networking ? **use lerping with Transform syncing ?**) ; we need a server - or use matchmaking ;
 
-- build and publish (for linux and windows) - use batch build
+- build and publish (for linux and windows) - **use batch build**
 
 - navigation : remove (or disable) NavMeshObstacle from tree - because it will be static part of navmesh
 
-- test tree removal on client - it fails sometimes ;
+- test tree removal on client - it fails sometimes - test all maps ;
 
 - scene changing is most problematic: client didn't detect when country changed for a player (for no apparent reason) ; but even high end games must disconnect player before changing scene !! - so, it's not that bad - before changing scene, tell players to reconnect after some time - if needed, their score will be stored on server, and will be restored when they reconnect ; so, the solution for now is: don't change the scene :D ;
 
