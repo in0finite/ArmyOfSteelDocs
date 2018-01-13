@@ -4,7 +4,7 @@ RTS (real time strategy) game similar to StarCraft, built on top of [uGameCore](
 
 # Download
 
-Download it from [here](https://drive.google.com/open?id=1B90sMQ98IYy4cztwy0BZIFLuyTTb1Q57). Currently, there is only linux version available, but I'll be adding version for windows very soon.
+Download it from [here](https://drive.google.com/open?id=122-geaZkHoP28YGVCwLHRDr-5M2D4YWu). It is available for linux and windows.
 
 # Gameplay video
 
