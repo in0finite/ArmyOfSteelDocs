@@ -1,12 +1,14 @@
 # Overview
 
 RTS (real time strategy) game similar to StarCraft, built on top of [uGameCore](https://github.com/in0finite/uGameCore).
-</br>
+
+<br/>
 
 # Download
 
 Download it from [here](https://drive.google.com/open?id=1ayVymOd0D9sjT7aw8YixeWvrMlJQrjSt). It is available for linux and windows.
-</br>
+
+<br/>
 
 # Gameplay video
 
@@ -14,7 +16,7 @@ Note that this is a little older video. The newer version of the game is improve
 
 [![](https://img.youtube.com/vi/Gy9FvmrzrjY/0.jpg)](https://www.youtube.com/watch?v=Gy9FvmrzrjY)
 
-</br>
+<br/>
 
 # Features
 
@@ -36,7 +38,7 @@ Note that this is a little older video. The newer version of the game is improve
 - Pathfinding - using unity's navigation
 - and many more
 
-</br>
+<br/>
 
 # Screenshots
 
