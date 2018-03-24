@@ -1,13 +1,14 @@
 
-- multiplayer : better transform updating (use photon networking ? **use lerping with Transform syncing ?**) ; we need a server - or use matchmaking ;
+- multiplayer : we need a server - or use matchmaking ; **use newer version of UnityEngine.Networking.dll and other networking dlls** - there are a couple of fixes for small irritating bugs ;
 
-- build and publish (for linux and windows) - use batch build ?
+- default quality setting is not "recommended"
 
-- **remove "server_cmd" command** , add "clear" command
-
-- **replace (or find free) third party models, textures, sounds**
+</br>
 
 ***
+</br>
+
+- use batch build when building for all platforms ? - it's too slow
 
 - navigation : remove (or disable) NavMeshObstacle from tree - because it will be static part of navmesh
 

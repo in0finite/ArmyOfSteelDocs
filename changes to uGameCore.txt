@@ -6,6 +6,7 @@ modifications to prefabs:
 - start game parameters
 - spawning player when he logs in
 - spawning player when scene changes
+- PlayerTeamChooser - unchecked Send Choose Team Message If FFA Is On
 
 modifications to scene:
 
@@ -15,10 +16,13 @@ modifications to scene:
 - disabled automatic map changing
 - ingame menu's canvas scaler reference resolution set to 1280x720, and match to 0.5
 - tooltip prefab assigned
-- scoreboard transparency
+- scoreboard color and transparency
 - disabled UI navigation => unchecked checkbox in EventSystem
 - removed TeamSettings script
 - removed demo scene from map cycle
+- changed button click handler for start-game button
+- disabled end-round button
+- disabled change-map button
 
 others:
 
