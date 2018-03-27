@@ -1,10 +1,17 @@
 
-- multiplayer : we need a server - or use matchmaking ; **use newer version of UnityEngine.Networking.dll and other networking dlls** - there are a couple of fixes for small irritating bugs ;
+- multiplayer : we need a server - or use matchmaking ; use newer version of UnityEngine.Networking.dll and other networking dlls - there are a couple of fixes for small irritating bugs ;
 
-- default quality setting is not "recommended"
+- test : network position syncing ; on different systems (linux, windows) ; on remote computers ;
+
+- **network transform interpolation** - tested - not good - try:
+	- history based interpolation (there is PR on bitbucket repo) 
+	- sync velocity (we would need to get current velocity of nav mesh agent)
+	- disable navmesh agent on clients ?
+	- or just tweak parameters in new NetworkTransform
+
+- record gameplay video
 
 </br>
-
 ***
 </br>
 
