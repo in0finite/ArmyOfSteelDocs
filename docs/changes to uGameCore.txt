@@ -11,6 +11,7 @@ modifications to prefabs:
 modifications to scene:
 
 - added spawnable prefabs in NetworkManager
+- changed map cycle
 - disabled round system
 - turned on FFA
 - disabled automatic map changing
@@ -19,10 +20,10 @@ modifications to scene:
 - scoreboard color and transparency
 - disabled UI navigation => unchecked checkbox in EventSystem
 - removed TeamSettings script
-- removed demo scene from map cycle
 - changed button click handler for start-game button
 - disabled end-round button
 - disabled change-map button
+- unchecked 'registerInputCvars' in GeneralSettings
 
 others:
 

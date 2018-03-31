@@ -4,8 +4,6 @@
 
 - **heroes** (e.g. robot) - your main unit ; it can heal itself ; when it dies, you can pay money to respawn it ; it gains attack and/or hitpoints when it kills ;
 
-- **area damage** - inflict area damage immidiately after regular damage ; attacks should have areaDamage field ; area damage should be displayed in UI ;
-
 - **attribute modifiers** - each one of them should be displayed in UI (possibly as tooltips), for: info area, ; start with damage, hitpoints ; code needs to adapt to read modified values ;
 
 - deathmatch mode : continuosly spawn units at some interval at town center – the winner is the player with highest num kills after certain time interval

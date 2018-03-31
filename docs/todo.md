@@ -1,4 +1,6 @@
 
+## TODO
+
 <br>
 
 Priority : **functional (gameplay) stuff**
@@ -7,19 +9,20 @@ Priority : **functional (gameplay) stuff**
 
 ### Active
 
-remove unused cvars ; add cvars for things like camera speed, zoom
-
-set default number of countries to 3 ; set default map to small terrain
-
-scoreboard sorting bug – objects are not of the same type ?
+better transform syncing over network
 
 <br>
 
 ***
 
-new gameplay stuff : **area damage** ; robot ; nuclear missile ; tomahawk missile ;
+new gameplay stuff :
 
-adapt for FoW : trees ? ; explosion ; water ? ; building placement ; resource gatherer ; AI ; range ring ; **camera focus object** ;
+- robot - download it from asset store ; hitpoints 450 ; attack damage 50 ; speed 3 ; cost wood 120 gold 120 ; they will need some attack effects ; AI will use it in 10% of his army ;
+- nuclear missile - fired from missile silo, and treated as projectile ; travels slow (10 m/s) ; expensive ; takes 2 min to build new one ; travels high in the sky ; big damage, big area ; AI will fire it against current attack target, or against strongest enemy object ;
+- tomahawk missile - also fired from missile silo ? ; travels above the ground ; much faster than nuclear missile ; high damage, but small area ; can be fired every 1 min ; AI will fire it against what ? ;
+- missile silo - building with 2 attacks (nuclear, tomahawk) ; auto attack will be disabled ; there will be option to choose current projectile ; cost: wood 300 gold 300 ; AI will try to build it only if he has fort ;
+
+adapt for FoW : trees ? ; explosion ; water ? ; building placement ; resource gatherer ; AI ; range ring ;
 
 when owning object is attacked – play alert sound
 
@@ -35,7 +38,7 @@ resources don't draw selection bar - Selectable should register itself with RTSG
 
 when to use circle search through cells : resource gatherer – when searching for resources ; AI gather action – when searching for resource ; AI – finding attack target ;
 
-rocket launcher – create explosion on rocket impact ; area damage ;
+rocket launcher – create explosion on rocket impact ;
 
 projectiles should be pooled
 
