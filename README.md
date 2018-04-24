@@ -6,7 +6,7 @@ RTS (real time strategy) game similar to StarCraft, built on top of [uGameCore](
 
 # Download
 
-Download it from [gamejolt](https://gamejolt.com/games/ArmyOfSteel/329209).
+Download it from [gamejolt](https://gamejolt.com/games/ArmyOfSteel/329209). Experimental builds are available [here](https://drive.google.com/open?id=1ayVymOd0D9sjT7aw8YixeWvrMlJQrjSt).
 
 <br/>
 
