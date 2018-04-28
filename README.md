@@ -10,11 +10,11 @@ Download it from [gamejolt](https://gamejolt.com/games/ArmyOfSteel/329209). Expe
 
 <br/>
 
-# Gameplay video
+# Gameplay videos
 
-Note that this is a little older video. The newer version of the game is improved and has more features.
+[![](https://img.youtube.com/vi/fX9_E0H7wHk/0.jpg)](https://www.youtube.com/watch?v=fX9_E0H7wHk)
 
-[![](https://img.youtube.com/vi/Gy9FvmrzrjY/0.jpg)](https://www.youtube.com/watch?v=Gy9FvmrzrjY)
+[![](https://img.youtube.com/vi/xCy5n7X_LeU/0.jpg)](https://www.youtube.com/watch?v=xCy5n7X_LeU)
 
 <br/>
 
